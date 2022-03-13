@@ -29,7 +29,7 @@ Then run the Kafka server also with default properties.
 
 `kafka-server-start.sh ../config/server.properties`
 
-Run the Kafka Producer, that is the script which create topic and data streams. Open another terminal and change to where the file located.
+Run the Kafka Producer, that is the script which create topic and data streams. Open another terminal and change the directory to where the file is located. Type the following command.
 
 `python3 kafka_producer.py`
 
@@ -37,17 +37,19 @@ To check if the producer run and create the topic, run the Kafka Consumer in a s
 
 `kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic iss-location --from-beginning`
 
-It should be printing the same data produced by the Kafka Producer. Or, you can just list the available topic by typing
+It should be printing the same data produced by the Kafka Producer. Or, you can just list the available topics by typing
 
 `kafka-topics.sh --bootstrap-server=localhost:9092 --list`
 
 This will print `iss-location` in the shell.
 
-Last, run the Spark Structured Streaming application using `spark-submit`. We need a package to run Kafka, so by typing this command
+Until this step you have successfully streaming the data to the cluster. The last step is how to get the data from the cluster and save it into files.
+
+Run the Spark Structured Streaming application using `spark-submit`. We need a package to run Kafka, so by typing this command
 
 `spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.2.1 write_output.py`
 
-will run the application properly.
+will run the application properly. The CSV files will be created when the application read the stream continuously.
 
 
 ## Verify the data
