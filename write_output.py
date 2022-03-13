@@ -74,6 +74,7 @@ df_2 = df_1.select('timestamp','iss_position.*')
 
 # If unspecified in Spark configuration,
 # the default time zone is our local time zone.
+# My default time zone is 'Asia/Jakarta'
 df_3 = df_2 \
     .withColumn('local_time', from_unixtime('timestamp')) \
     .select('local_time', 'longitude', 'latitude')
