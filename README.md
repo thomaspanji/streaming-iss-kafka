@@ -16,6 +16,15 @@ I created two main Python files. The first is a file to create a topic and get t
 
 The second is a file to read or consume the topic. I did some transformation before saved the processed data into CSV files.
 
+**Update:**
+
+I made modification for Kafka producer. The script is now can receive an argument to specify how long the stream will run for certain time. The arguments are:
+- `-o` or `--orbit` to specify how many orbits the stream will fetch from the API. I set an orbit take for 95 minutes, though actually around 90-93 minutes.
+- `-m` or `--minutes` to specify the stream explicitly runs for certain minutes.
+- `-h` or `--help` is a default argument to see description about the script and how to use it.
+
+> In the range of 24 hours, the ISS can orbit for about 16 times, depends on the altitude and gravitational forces.
+
 
 ## Steps to run
 
