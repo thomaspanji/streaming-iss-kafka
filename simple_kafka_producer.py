@@ -1,11 +1,8 @@
 import json
 import requests
-import datetime
 from kafka import KafkaProducer
 from time import sleep
 
-
-ORBIT_MINUTE = 95
 
 producer = KafkaProducer(
     bootstrap_servers=['localhost','9092'],
@@ -37,16 +34,6 @@ def get_data():
     producer.send('iss-location', value=data)
     producer.flush()
 
-start_time = datetime.datetime.now()
-
 while True:
     get_data()
-    now = datetime.datetime.now()
-    delta = now - start_time
-    minutes_elapsed = delta.total_seconds() / 60
-    
-    if minutes_elapsed >= ORBIT_MINUTE:
-        break
     sleep(10)
-
-print('Streaming data finished.')
