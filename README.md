@@ -1,4 +1,4 @@
-# streaming-iss-kafka
+# Streaming ISS Position Data using Kafka
 
 ## Scope of work
 
@@ -12,7 +12,7 @@ This is a raw look when opening the link in the browser. The data is a nested JS
 
 ## Script
 
-I created two main Python files: `simple_kafka_producer.py` and `write_output.py`. The first is a file to create a topic and request the data from API. Then, streams it to a Kafka cluster.
+I created two main Python files: `simple_kafka_producer.py` and `write_output.py`. The first is a file to request position data from the API and create a Kafka topic. Then, stream the data to a Kafka cluster.
 
 The second is a file to read or consume the topic, it is a Spark Structured Streaming application. The script contains steps from subscribing the Kafka topic, transforming the data, to saving them into files. 
 
@@ -28,7 +28,7 @@ I made modifications for the Kafka Producer script. It can be accessed in the fo
 Example usage:
 
 1. `python3 main.py -o 2` or `python3 main.py --orbit 2` to fetch two orbits of data. It will run for 190 minutes.
-2. `python3 main.py -m 5` or `python3 main.py -minutes 5` to exactly stream the data for five minutes.
+2. `python3 main.py -m 5` or `python3 main.py --minutes 5` to exactly stream the data for five minutes.
 
 
 ## Steps to execute the program
@@ -96,8 +96,8 @@ Then look into one non-empty file. It should show three columns which are `local
 ## Conclusion
 
 By doing this project, I learned about:
+- requesting data from an API,
 - creating a program to stream real-time ISS position data using Kafka Producer,
-- requesting data from API,
 - running a Spark Structured Streaming application to subscribe to a Kafka topic, transform the data received, and save them into CSV files.
 
 
